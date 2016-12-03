@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogAdoption", "DogAdoption\DogAdoption.csproj", "{DA242DC7-CB10-41C0-8DDF-07808BCC8671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogAdoption.Tests", "DogAdoption.Tests\DogAdoption.Tests.csproj", "{DA8104AE-0F25-48D4-9150-D3053E7AB38B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA242DC7-CB10-41C0-8DDF-07808BCC8671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA242DC7-CB10-41C0-8DDF-07808BCC8671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA242DC7-CB10-41C0-8DDF-07808BCC8671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA242DC7-CB10-41C0-8DDF-07808BCC8671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8104AE-0F25-48D4-9150-D3053E7AB38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8104AE-0F25-48D4-9150-D3053E7AB38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8104AE-0F25-48D4-9150-D3053E7AB38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8104AE-0F25-48D4-9150-D3053E7AB38B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
