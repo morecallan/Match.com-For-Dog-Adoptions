@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*SPLASH*/
+.horizontal-card-container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 90%;
+    margin: 5%;
+    overflow-x: auto;
+    background: blue;
+}
