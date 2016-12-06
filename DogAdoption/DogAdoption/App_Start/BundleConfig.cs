@@ -15,8 +15,11 @@ namespace DogAdoption
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular.min.js",
-                        "~/Scripts/app.js"));
+                        "~/Scripts/angular.js",
+                        "~/Scripts/app.js",
+                        "~/Scripts/Factories/Geolocation.Factory.js",
+                        "~/Scripts/Factories/Petfinder.Factory.js",
+                        "~/Scripts/Controllers/Splash.Ctrl.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
