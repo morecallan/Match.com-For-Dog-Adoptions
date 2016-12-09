@@ -30,5 +30,16 @@ textarea {
     width: 90%;
     margin: 5%;
     overflow-x: auto;
-    background: blue;
+    background-color: navy;
 }
+
+.horizontal-card-container > .card {
+    margin: 5%;
+    min-width: 200px;
+}
+
+.horizontal-card-container > .card img {
+    object-fit: cover;
+    max-width: 200px;
+}
+

@@ -14,7 +14,7 @@ app.controller('Splash', function ($scope, $q, Petfinder) {
         })[0]["$t"];
         dogObject.name = fromPetfinder.name["$t"];
         dogObject.description = limitText(fromPetfinder.description["$t"] || "No description provided.");
-        dogObject.link = `http://www.petfinder.com/petdetails/${fromPetfinder.id["$t"]}`
+        dogObject.link = `https://www.petfinder.com/petdetail/${fromPetfinder.id["$t"]}`
         return dogObject;
     }
 
