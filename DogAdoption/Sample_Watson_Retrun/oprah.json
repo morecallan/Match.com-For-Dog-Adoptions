@@ -217,7 +217,7 @@
         },
         {
           "trait_id": "facet_vulnerability",
-          "name": "Susceptible to stress",
+            "name": "Susceptible to stress",
           "category": "personality",
           "percentile": 0.3862483573834662
         }
