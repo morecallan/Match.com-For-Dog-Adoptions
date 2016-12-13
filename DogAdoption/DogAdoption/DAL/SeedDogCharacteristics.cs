@@ -16,11 +16,11 @@ namespace DogAdoption.DAL
             WebRequest request = WebRequest.Create("https://pet-proxy.herokuapp.com/api/petfinder/breed.list?format=json&animal=dog&key=c292349ff94917231922004072f72865");
             WebResponse response = request.GetResponse();
 
-            dynamic breedList = JsonConvert.DeserializeObject(response.ToString());
-            
+            dynamic returnJsonObj = JsonConvert.DeserializeObject(response.ToString());
+            dynamic breedList = returnJsonObj.petfinder.breeds.breed;
             foreach (var breed in breedList)
             {
-                AllDogBreeds.Add(breed);
+                AllDogBreeds.Add(breed.Value);
             }
 
             return AllDogBreeds;
