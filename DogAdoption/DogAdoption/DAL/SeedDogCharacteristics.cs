@@ -11,7 +11,7 @@ namespace DogAdoption.DAL
     public class SeedDogCharacteristics
     {
         public SeedDogCharacteristics() { }
-        public List<String> ReturnListOfDogBreeds()
+        public virtual List<String> ReturnListOfDogBreeds()
         {
             List<String> AllDogBreeds = new List<string>();
             // Web request to petfinder API
@@ -31,38 +31,37 @@ namespace DogAdoption.DAL
         public string DogBreedNameParser(string TempName)
         {
             string[] CharacterArray = TempName.ToLower().Split(' ');
-            string AdjustedName = string.Join("", CharacterArray);
+            string AdjustedName = string.Join("-", CharacterArray);
             return AdjustedName;
         }
 
        public List<DogBreedCharacteristic> CreateListOfBreedCharacteristics()
        {
             List<DogBreedCharacteristic> AllDogCharacteristics = new List<DogBreedCharacteristic>();
-            string DogBreedNameParsed;
 
-            List<String> AllDogBreeds = ReturnListOfDogBreeds();
+            List<string> AllDogBreeds = ReturnListOfDogBreeds();
             foreach (string Breed in AllDogBreeds)
             {
-                DogBreedNameParsed = DogBreedNameParser(Breed);
 
+                WebClient client = new WebClient();
+                string response = client.DownloadString("https://dogbreed-characteristics.herokuapp.com/dogbreed/?breed=" + DogBreedNameParser(Breed));
 
-                WebRequest request = WebRequest.Create("https://dogbreed-characteristics.herokuapp.com/dogbreed/?breed=" + DogBreedNameParsed);
-                WebResponse response = request.GetResponse();
-
-                dynamic returnJsonObj = JsonConvert.DeserializeObject(response.ToString());
-                dynamic breedCharacteristicsList = returnJsonObj.characteristics;
-                foreach (var characteristic in breedCharacteristicsList)
+                if (response != "")
                 {
-                    DogBreedCharacteristic singleBreedCharacteristic = new DogBreedCharacteristic();
-                    singleBreedCharacteristic.BreedName = Breed;
-                    singleBreedCharacteristic.BreedCharacteristicId = characteristic.traitId.Value;
-                    singleBreedCharacteristic.BreedCharacteristic = characteristic.trait.Value;
-                    singleBreedCharacteristic.BreedCharacteristicValue = characteristic.value.Value;
+                    dynamic returnJsonObj = JsonConvert.DeserializeObject(response);
+                    dynamic breedCharacteristicsList = returnJsonObj.characteristics;
+                    foreach (var characteristic in breedCharacteristicsList)
+                    {
+                        DogBreedCharacteristic singleBreedCharacteristic = new DogBreedCharacteristic();
+                        singleBreedCharacteristic.BreedName = "done";
+                        singleBreedCharacteristic.BreedCharacteristicId = characteristic.traitId.Value;
+                        singleBreedCharacteristic.BreedCharacteristic = characteristic.trait.Value;
+                        singleBreedCharacteristic.BreedCharacteristicValue = characteristic.value.Value;
 
-                    AllDogCharacteristics.Add(singleBreedCharacteristic);
+                        AllDogCharacteristics.Add(singleBreedCharacteristic);
+                    }
                 }
-
-       
+     
             }
 
             return AllDogCharacteristics;

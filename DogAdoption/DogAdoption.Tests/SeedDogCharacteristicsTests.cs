@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DogAdoption.DAL;
 using System.Collections.Generic;
+using DogAdoption.Models;
 
 namespace DogAdoption.Tests
 {
@@ -16,8 +17,40 @@ namespace DogAdoption.Tests
             List<string> list_of_dog_breeds = seed_dog_characteristics.ReturnListOfDogBreeds();
 
             //Act
-            int expected_list_length = 50;
+            int expected_list_length = 249;
             int actual_list_length = list_of_dog_breeds.Count;
+
+            //Assert
+            Assert.AreEqual(expected_list_length, actual_list_length);
+        }
+
+        [TestMethod]
+        public void METHODDogBreedNameParserRETURNSStringAllLowerAndNoSpaces()
+        {
+            //Arrange
+            string string_before = "Cool Dog";
+
+            SeedDogCharacteristics seed_dog_characteristics = new SeedDogCharacteristics();
+            string adjusted_name = seed_dog_characteristics.DogBreedNameParser(string_before);
+
+            //Act
+            string expected_resultant_string = "cool-dog";
+            string actual_resultant_string = adjusted_name;
+
+            //Assert
+            Assert.AreEqual(expected_resultant_string, actual_resultant_string);
+        }
+
+        [TestMethod]
+        public void METHODCreateListOfBreedCharacteristicsRETURNSListOf6225Breeds()
+        {
+            //Arrange
+            SeedDogCharacteristics seed_dog_characteristics = new SeedDogCharacteristics();
+            List<DogBreedCharacteristic> list_of_dog_breed_characteristic = seed_dog_characteristics.CreateListOfBreedCharacteristics();
+
+            //Act
+            int expected_list_length = 6225;
+            int actual_list_length = list_of_dog_breed_characteristic.Count;
 
             //Assert
             Assert.AreEqual(expected_list_length, actual_list_length);
