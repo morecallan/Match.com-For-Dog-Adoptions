@@ -11,18 +11,18 @@ namespace DogAdoption.DAL
     public class SeedDogCharacteristics
     {
         public SeedDogCharacteristics() { }
-        public virtual List<String> ReturnListOfDogBreeds()
+        public List<string> ReturnListOfDogBreeds()
         {
             List<String> AllDogBreeds = new List<string>();
             // Web request to petfinder API
             WebClient client = new WebClient();
             string response = client.DownloadString("https://pet-proxy.herokuapp.com/api/petfinder/breed.list?format=json&animal=dog&key=c292349ff94917231922004072f72865");
 
-            dynamic returnJsonObj = JsonConvert.DeserializeObject(response);
+            dynamic returnJsonObj = JsonConvert.DeserializeObject(response, typeof(object));
             dynamic breedList = returnJsonObj.petfinder.breeds.breed;
             foreach (var breed in breedList)
             {
-                AllDogBreeds.Add(breed.Value);
+                AllDogBreeds.Add(breed["$t"].Value);
             }
 
             return AllDogBreeds;
@@ -46,17 +46,19 @@ namespace DogAdoption.DAL
                 WebClient client = new WebClient();
                 string response = client.DownloadString("https://dogbreed-characteristics.herokuapp.com/dogbreed/?breed=" + DogBreedNameParser(Breed));
 
-                if (response != "")
+          
+
+                if (response != null)
                 {
-                    dynamic returnJsonObj = JsonConvert.DeserializeObject(response);
+                    dynamic returnJsonObj = JsonConvert.DeserializeObject(response.ToString(), typeof(object));
                     dynamic breedCharacteristicsList = returnJsonObj.characteristics;
                     foreach (var characteristic in breedCharacteristicsList)
                     {
                         DogBreedCharacteristic singleBreedCharacteristic = new DogBreedCharacteristic();
-                        singleBreedCharacteristic.BreedName = "done";
-                        singleBreedCharacteristic.BreedCharacteristicId = characteristic.traitId.Value;
+                        singleBreedCharacteristic.BreedName = Breed;
+                        singleBreedCharacteristic.BreedCharacteristicId = (int)characteristic.traitId.Value;
                         singleBreedCharacteristic.BreedCharacteristic = characteristic.trait.Value;
-                        singleBreedCharacteristic.BreedCharacteristicValue = characteristic.value.Value;
+                        singleBreedCharacteristic.BreedCharacteristicValue = Int32.Parse(characteristic.value.Value);
 
                         AllDogCharacteristics.Add(singleBreedCharacteristic);
                     }
