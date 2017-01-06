@@ -8,9 +8,19 @@ using System.Web;
 
 namespace DogAdoption.DAL
 {
-    public class SeedDogCharacteristics
+    public class CompanionRepository
     {
-        public SeedDogCharacteristics() { }
+        public CompanionContext Context { get; set; }
+
+        public CompanionRepository() { }
+        
+
+        public CompanionRepository(CompanionContext _context)
+        {
+            Context = _context;
+        }
+
+
         public List<string> ReturnListOfDogBreeds()
         {
             List<String> AllDogBreeds = new List<string>();

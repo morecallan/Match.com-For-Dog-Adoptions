@@ -26,6 +26,9 @@ namespace DogAdoption.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+
+            context.DogBreedCharacteristics.AddOrUpdate(c => c, );
         }
     }
 }

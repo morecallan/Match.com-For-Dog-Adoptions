@@ -13,7 +13,7 @@ namespace DogAdoption.Tests
         public void METHODReturnListOfDogBreedsRETURNSListOf50Breeds()
         {
             //Arrange
-            SeedDogCharacteristics seed_dog_characteristics = new SeedDogCharacteristics();
+            CompanionContext seed_dog_characteristics = new CompanionContext();
             List<string> list_of_dog_breeds = seed_dog_characteristics.ReturnListOfDogBreeds();
 
             //Act
@@ -30,7 +30,7 @@ namespace DogAdoption.Tests
             //Arrange
             string string_before = "Cool Dog";
 
-            SeedDogCharacteristics seed_dog_characteristics = new SeedDogCharacteristics();
+            CompanionContext seed_dog_characteristics = new CompanionContext();
             string adjusted_name = seed_dog_characteristics.DogBreedNameParser(string_before);
 
             //Act
@@ -45,7 +45,7 @@ namespace DogAdoption.Tests
         public void METHODCreateListOfBreedCharacteristicsRETURNSListOf6225Breeds()
         {
             //Arrange
-            SeedDogCharacteristics seed_dog_characteristics = new SeedDogCharacteristics();
+            CompanionContext seed_dog_characteristics = new CompanionContext();
             List<DogBreedCharacteristic> list_of_dog_breed_characteristic = seed_dog_characteristics.CreateListOfBreedCharacteristics();
 
             //Act
