@@ -11,12 +11,13 @@ namespace DogAdoption.Migrations
                 "dbo.DogBreedCharacteristics",
                 c => new
                     {
-                        BreedCharacteristicId = c.Int(nullable: false, identity: true),
+                        BreedCharacteristicUniqueId = c.Int(nullable: false, identity: true),
                         BreedName = c.String(),
+                        BreedCharacteristicId = c.Int(nullable: false),
                         BreedCharacteristic = c.String(),
                         BreedCharacteristicValue = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.BreedCharacteristicId);
+                .PrimaryKey(t => t.BreedCharacteristicUniqueId);
             
         }
         

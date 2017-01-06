@@ -78,5 +78,16 @@ namespace DogAdoption.DAL
 
             return AllDogCharacteristics;
         }
+
+        public void SeedDatabaseWithAllDogBreedCharacteristics()
+        {
+            List<DogBreedCharacteristic> AllDogBreedCharacteristics = CreateListOfBreedCharacteristics();
+
+            foreach (DogBreedCharacteristic characteristic in AllDogBreedCharacteristics)
+            {
+                Context.DogBreedCharacteristics.Add(characteristic);
+            }
+        }
+
     }
 }

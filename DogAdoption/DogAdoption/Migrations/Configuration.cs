@@ -1,6 +1,9 @@
 namespace DogAdoption.Migrations
 {
+    using DAL;
+    using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -26,9 +29,14 @@ namespace DogAdoption.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            CompanionRepository repo = new CompanionRepository();
 
+            List<DogBreedCharacteristic> AllDogBreedCharacteristics = repo.CreateListOfBreedCharacteristics();
 
-            context.DogBreedCharacteristics.AddOrUpdate(c => c, );
+            foreach (DogBreedCharacteristic characteristic in AllDogBreedCharacteristics)
+            {
+                context.DogBreedCharacteristics.AddOrUpdate(characteristic);
+            }
         }
     }
 }

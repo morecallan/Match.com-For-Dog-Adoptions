@@ -11,8 +11,9 @@ namespace DogAdoption.Models
         public DogBreedCharacteristic(){}
 
         [Key]
-        public int BreedCharacteristicId { get; set; }
+        public int BreedCharacteristicUniqueId { get; set; }
         public string BreedName { get; set; }
+        public int BreedCharacteristicId { get; set; }
         public string BreedCharacteristic { get; set; }
         public int BreedCharacteristicValue { get; set; }
     }
