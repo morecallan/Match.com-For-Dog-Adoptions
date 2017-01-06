@@ -49,7 +49,7 @@ namespace DogAdoption.Tests
             List<DogBreedCharacteristic> list_of_dog_breed_characteristic = seed_dog_characteristics.CreateListOfBreedCharacteristics();
 
             //Act
-            int expected_list_length = 6225;
+            int expected_list_length = 3820;
             int actual_list_length = list_of_dog_breed_characteristic.Count;
 
             //Assert
